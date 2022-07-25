@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
 import org.taruts.djig.core.childContext.DynamicProjectContextManager;
-import org.taruts.djig.core.childContext.DynamicProjectContextsInitializer;
 import org.taruts.djig.core.childContext.configurationProperties.DjigConfigurationProperties;
 import org.taruts.djig.core.childContext.configurationProperties.DynamicProjectLoaderFromConfigurationProperties;
 import org.taruts.djig.core.childContext.gradleBuild.DynamicProjectGradleBuildService;
@@ -66,11 +65,6 @@ public class DjigAutoConfiguration {
     @Bean
     DynamicProjectContextManager dynamicProjectContextManager() {
         return new DynamicProjectContextManager();
-    }
-
-    @Bean
-    DynamicProjectContextsInitializer dynamicProjectContextsInitializer() {
-        return new DynamicProjectContextsInitializer();
     }
 
     @Bean

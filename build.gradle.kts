@@ -37,8 +37,8 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     // Spring Retry
-    api("org.springframework:spring-aspects")
-    api("org.springframework.retry:spring-retry:1.3.3")
+    implementation("org.springframework:spring-aspects")
+    implementation("org.springframework.retry:spring-retry:1.3.3")
 
     // GitLab API
     implementation("org.gitlab4j:gitlab4j-api:5.0.1")
@@ -48,14 +48,14 @@ dependencies {
     implementation("org.taruts:gradle-utils:001")
 
     // Utils
-    api("org.apache.commons:commons-lang3")
-    api("commons-io:commons-io:2.11.0")
-    api("com.google.guava:guava:31.1-jre")
+    implementation("org.apache.commons:commons-lang3")
+    implementation("commons-io:commons-io:2.11.0")
+    implementation("com.google.guava:guava:31.1-jre")
 
     // Reflections
     implementation("org.reflections:reflections:0.10.2")
 
-    implementation("org.taruts.djig:dynamic-api:001")
+    implementation("org.taruts.djig:djig-dynamic-api:001")
 }
 
 tasks.named<Test>("test") {
@@ -66,6 +66,10 @@ dependencyManagement {
     imports {
         mavenBom("org.springframework.boot:spring-boot-dependencies:2.7.0")
     }
+}
+
+configure<JavaPluginExtension> {
+    withSourcesJar()
 }
 
 publishing {
