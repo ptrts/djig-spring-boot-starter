@@ -1,13 +1,10 @@
 package org.taruts.djig.core;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-@Component
 public class DynamicProjectRepository {
 
     private final Map<String, DynamicProject> dynamicProjectsMap = Collections.synchronizedMap(new HashMap<>());

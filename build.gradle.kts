@@ -32,7 +32,30 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
 
-    implementation("org.taruts.dynamic-java-code-stored-in-git:core-dynamic-api:001")
+    // Spring Boot + WebFlux
+    api("org.springframework.boot:spring-boot-starter-webflux")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    // Spring Retry
+    api("org.springframework:spring-aspects")
+    api("org.springframework.retry:spring-retry:1.3.3")
+
+    // GitLab API
+    implementation("org.gitlab4j:gitlab4j-api:5.0.1")
+
+    // Our util libraries
+    implementation("org.taruts:git-utils:001")
+    implementation("org.taruts:gradle-utils:001")
+
+    // Utils
+    api("org.apache.commons:commons-lang3")
+    api("commons-io:commons-io:2.11.0")
+    api("com.google.guava:guava:31.1-jre")
+
+    // Reflections
+    implementation("org.reflections:reflections:0.10.2")
+
+    implementation("org.taruts.djig:dynamic-api:001")
 }
 
 tasks.named<Test>("test") {

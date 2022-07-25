@@ -1,13 +1,11 @@
 package org.taruts.djig.core.childContext.configurationProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectManager;
 
 import javax.annotation.PostConstruct;
 
-@Component
 public class DynamicProjectLoaderFromConfigurationProperties {
 
     @Autowired

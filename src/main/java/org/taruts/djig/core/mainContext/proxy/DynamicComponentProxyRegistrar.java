@@ -12,7 +12,6 @@ import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectQualifier;
@@ -26,7 +25,6 @@ import java.util.Set;
 /**
  * {@link BeanDefinitionRegistryPostProcessor} registering a {@link DynamicComponentProxy} for every dynamic interface.
  */
-@Component
 public class DynamicComponentProxyRegistrar implements BeanDefinitionRegistryPostProcessor, EnvironmentAware {
 
     private static final Class<DynamicComponentProxyFactory> FACTORY_CLASS = DynamicComponentProxyFactory.class;

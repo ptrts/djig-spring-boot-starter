@@ -11,11 +11,14 @@ import java.util.Map;
 @Getter
 @Setter
 public class DjigConfigurationProperties {
+
     public static final String PREFIX = "djig";
 
     Map<String, DynamicProjectConfigurationProperties> dynamicProjects = new HashMap<>();
 
     Hook hook = new Hook();
+
+    Controller controller = new Controller();
 
     @Getter
     @Setter
@@ -24,5 +27,19 @@ public class DjigConfigurationProperties {
         String host;
         boolean sslVerification = false;
         String secretToken;
+    }
+
+    @Getter
+    @Setter
+    public static class Controller {
+
+        Element refresh = new Element();
+        Element dynamicProject = new Element();
+
+        @Getter
+        @Setter
+        public static class Element {
+            String path;
+        }
     }
 }

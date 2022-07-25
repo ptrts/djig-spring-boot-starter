@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectRepository;
 import org.taruts.djig.core.childContext.classLoader.DynamicProjectClassLoader;
@@ -26,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-@Component
 @Slf4j
 public class DynamicProjectContextManager {
 

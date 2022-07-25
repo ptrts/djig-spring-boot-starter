@@ -1,11 +1,9 @@
 package org.taruts.djig.core.runtime;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectRepository;
 
-@Component
 public class DynamicImplementationSelector {
 
     @Autowired

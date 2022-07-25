@@ -3,11 +3,10 @@ package org.taruts.djig.core.childContext.remote;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component
+// todo Слишком opinionated
 public class CloneRetryTemplate extends RetryTemplate {
 
     @PostConstruct

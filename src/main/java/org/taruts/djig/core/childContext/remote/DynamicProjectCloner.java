@@ -1,14 +1,12 @@
 package org.taruts.djig.core.childContext.remote;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.taruts.gitUtils.GitUtils;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
-@Component
 public class DynamicProjectCloner {
 
     @Autowired

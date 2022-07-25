@@ -9,12 +9,9 @@ import org.gitlab4j.api.models.Project;
 import org.gitlab4j.api.models.ProjectHook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.Ordered;
-import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.taruts.djig.app.controller.refresh.RefreshController;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectRepository;
 import org.taruts.djig.core.OurSmartLifecycle;
@@ -31,11 +28,7 @@ import java.util.function.BiConsumer;
  * For any dynamic project registers a webhook in the dynamic code GitLab project, after the application has started
  * and removes the hook on shutdown.
  * The webhook notifies the application when a new version of the dynamic code has been pushed.
- *
- * @see RefreshController
  */
-@Profile({"dev", "prod"})
-@Component
 @Slf4j
 public class GitlabHookRegistrar extends OurSmartLifecycle implements Ordered {
 
