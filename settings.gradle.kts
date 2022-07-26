@@ -1,1 +1,1 @@
-rootProject.name = "djig-core"
+rootProject.name = "djig-spring-boot-starter"
