@@ -44,8 +44,8 @@ dependencies {
     implementation("org.gitlab4j:gitlab4j-api:5.0.1")
 
     // Our util libraries
-    implementation("org.taruts:git-utils:001")
-    implementation("org.taruts:gradle-utils:001")
+    implementation("org.taruts:taruts-git-utils:1.0.0")
+    implementation("org.taruts:taruts-gradle-utils:1.0.0")
 
     // Utils
     implementation("org.apache.commons:commons-lang3")
@@ -55,7 +55,7 @@ dependencies {
     // Reflections
     implementation("org.reflections:reflections:0.10.2")
 
-    implementation("org.taruts.djig:djig-dynamic-api:001")
+    implementation("org.taruts.djig:djig-dynamic-api:1.0.0")
 }
 
 tasks.named<Test>("test") {
