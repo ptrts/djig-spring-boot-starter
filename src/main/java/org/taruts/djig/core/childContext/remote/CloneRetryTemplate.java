@@ -6,7 +6,6 @@ import org.springframework.retry.support.RetryTemplate;
 
 import javax.annotation.PostConstruct;
 
-// todo Слишком opinionated
 public class CloneRetryTemplate extends RetryTemplate {
 
     @PostConstruct
