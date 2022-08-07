@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.HashMap;
 import java.util.Map;
 
+// todo Сделать формирование JSON со схемой пропертей
 @ConfigurationProperties(DjigConfigurationProperties.PREFIX)
 @Getter
 @Setter
