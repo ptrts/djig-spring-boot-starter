@@ -1,4 +1,4 @@
-package org.taruts.djig.core.childContext.configurationProperties;
+package org.taruts.djig.core.configurationProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.taruts.djig.core.DynamicProject;

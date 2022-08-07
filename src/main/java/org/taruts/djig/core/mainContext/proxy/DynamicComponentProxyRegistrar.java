@@ -15,8 +15,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectQualifier;
-import org.taruts.djig.core.childContext.configurationProperties.DjigConfigurationProperties;
-import org.taruts.djig.core.childContext.configurationProperties.DynamicProjectConfigurationPropertiesMapper;
+import org.taruts.djig.core.configurationProperties.DjigConfigurationProperties;
+import org.taruts.djig.core.configurationProperties.DynamicProjectConfigurationPropertiesMapper;
 import org.taruts.djig.dynamicApi.DynamicComponent;
 
 import java.util.Map;

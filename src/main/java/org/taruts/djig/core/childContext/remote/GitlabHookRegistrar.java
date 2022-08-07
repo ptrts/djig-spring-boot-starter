@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectRepository;
 import org.taruts.djig.core.OurSmartLifecycle;
-import org.taruts.djig.core.childContext.configurationProperties.DjigConfigurationProperties;
+import org.taruts.djig.core.configurationProperties.DjigConfigurationProperties;
 
 import java.net.MalformedURLException;
 import java.net.URI;

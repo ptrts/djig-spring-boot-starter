@@ -1,4 +1,4 @@
-package org.taruts.djig.core.childContext.configurationProperties;
+package org.taruts.djig.core.configurationProperties;
 
 import lombok.Getter;
 import lombok.Setter;

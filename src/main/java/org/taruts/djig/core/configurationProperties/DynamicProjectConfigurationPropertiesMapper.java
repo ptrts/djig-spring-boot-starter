@@ -1,4 +1,4 @@
-package org.taruts.djig.core.childContext.configurationProperties;
+package org.taruts.djig.core.configurationProperties;
 
 import com.google.common.base.Functions;
 import org.taruts.djig.core.DynamicProject;
