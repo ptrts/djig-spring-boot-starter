@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.HashMap;
 import java.util.Map;
 
-// todo Сделать формирование JSON со схемой пропертей
 @ConfigurationProperties(DjigConfigurationProperties.PREFIX)
 @Getter
 @Setter
@@ -15,11 +14,20 @@ public class DjigConfigurationProperties {
 
     public static final String PREFIX = "djig";
 
-    Map<String, DynamicProjectConfigurationProperties> dynamicProjects = new HashMap<>();
+    Map<String, DynamicProject> dynamicProjects = new HashMap<>();
 
     Hook hook = new Hook();
 
     Controller controller = new Controller();
+
+    @Getter
+    @Setter
+    public static class DynamicProject {
+        String url;
+        String username;
+        String password;
+        String dynamicInterfacePackage;
+    }
 
     @Getter
     @Setter

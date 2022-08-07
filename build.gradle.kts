@@ -28,6 +28,9 @@ repositories {
 
 dependencies {
 
+    // Generation of META-INF/spring-configuration-metadata.json
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
     // Lombok
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

@@ -11,30 +11,30 @@ import java.util.stream.Collectors;
 
 public class DynamicProjectConfigurationPropertiesMapper {
 
-    public static Map<String, DynamicProject> map(Map<String, DynamicProjectConfigurationProperties> dynamicProjectsConfigurationProperties) {
+    public static Map<String, DynamicProject> map(Map<String, DjigConfigurationProperties.DynamicProject> dynamicProjectsConfigurationProperties) {
         return dynamicProjectsConfigurationProperties
                 .entrySet()
                 .stream()
                 .map(entry -> {
                     String dynamicProjectName = entry.getKey();
-                    DynamicProjectConfigurationProperties dynamicProjectConfigurationProperties = entry.getValue();
+                    DjigConfigurationProperties.DynamicProject dynamicProjectConfigurationProperties = entry.getValue();
                     return map(dynamicProjectName, dynamicProjectConfigurationProperties);
                 })
                 .collect(Collectors.toMap(DynamicProject::getName, Functions.identity()));
     }
 
-    public static DynamicProject map(String dynamicProjectName, DynamicProjectConfigurationProperties dynamicProjectConfigurationProperties) {
+    public static DynamicProject map(String dynamicProjectName, DjigConfigurationProperties.DynamicProject dynamicProjectConfigurationProperties) {
         DynamicProjectGitRemote remote = new DynamicProjectGitRemote(
-                dynamicProjectConfigurationProperties.url(),
-                dynamicProjectConfigurationProperties.username(),
-                dynamicProjectConfigurationProperties.password()
+                dynamicProjectConfigurationProperties.getUrl(),
+                dynamicProjectConfigurationProperties.getUsername(),
+                dynamicProjectConfigurationProperties.getPassword()
         );
         File sourceDirectory = DynamicProjectSourceLocator.getSourceDirectory(dynamicProjectName);
         return new DynamicProject(
                 dynamicProjectName,
                 remote,
                 sourceDirectory,
-                dynamicProjectConfigurationProperties.dynamicInterfacePackage()
+                dynamicProjectConfigurationProperties.getDynamicInterfacePackage()
         );
     }
 }
