@@ -1,6 +1,5 @@
 package org.taruts.djig.core;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -79,14 +78,12 @@ public class DjigAutoConfiguration {
     }
 
     @Bean
-    SimpleUrlHandlerMapping djigHandlerMapping(
-            @Value("djig.controller.refresh.path") String refreshPath,
-            @Value("djig.controller.dynamic-project.path") String dynamicProjectPath
-    ) {
+    SimpleUrlHandlerMapping djigHandlerMapping(DjigConfigurationProperties djigConfigurationProperties) {
+        DjigConfigurationProperties.Controller controllerProperties = djigConfigurationProperties.getController();
         return new SimpleUrlHandlerMapping(
                 Map.of(
-                        refreshPath, refreshController(),
-                        dynamicProjectPath, dynamicProjectController()
+                        controllerProperties.getRefresh().getPath(), refreshController(),
+                        controllerProperties.getDynamicProject().getPath(), dynamicProjectController()
                 )
         );
     }
