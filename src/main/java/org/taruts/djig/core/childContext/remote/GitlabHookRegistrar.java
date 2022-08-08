@@ -8,7 +8,7 @@ import org.gitlab4j.api.GitLabApiException;
 import org.gitlab4j.api.models.Project;
 import org.gitlab4j.api.models.ProjectHook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext;
+import org.springframework.boot.web.context.WebServerApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -41,7 +41,7 @@ public class GitlabHookRegistrar extends OurSmartLifecycle implements Ordered {
     private DjigConfigurationProperties djigConfigurationProperties;
 
     @Autowired
-    private ReactiveWebServerApplicationContext reactiveWebServerApplicationContext;
+    private WebServerApplicationContext webServerApplicationContext;
 
     @Autowired
     private DynamicProjectRepository dynamicProjectRepository;
@@ -128,7 +128,7 @@ public class GitlabHookRegistrar extends OurSmartLifecycle implements Ordered {
 
         String protocol = hookProperties.getProtocol();
 
-        int ourServletContainerPort = reactiveWebServerApplicationContext.getWebServer().getPort();
+        int ourServletContainerPort = webServerApplicationContext.getWebServer().getPort();
 
         return UriComponentsBuilder
                 .newInstance()

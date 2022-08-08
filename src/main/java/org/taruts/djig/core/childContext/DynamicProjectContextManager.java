@@ -144,7 +144,10 @@ public class DynamicProjectContextManager {
         }
 
         dynamicProjectRepository.forEachProject(dynamicProject -> {
-            dynamicProject.getContext().close();
+            GradleProjectApplicationContext childContext = dynamicProject.getContext();
+            if (childContext != null) {
+                childContext.close();
+            }
             dynamicProject.setContext(null);
         });
     }
