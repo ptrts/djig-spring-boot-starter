@@ -4,13 +4,13 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.BeanFactoryAnnotationUtils;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
 import org.taruts.djig.core.DynamicProject;
+import org.taruts.djig.core.DynamicProjectQualifier;
 import org.taruts.djig.core.DynamicProjectRepository;
 import org.taruts.djig.core.childContext.classLoader.DynamicProjectClassLoader;
 import org.taruts.djig.core.childContext.context.GradleProjectApplicationContext;
@@ -85,13 +85,14 @@ public class DynamicProjectContextManager {
 
         ConfigurableListableBeanFactory beanFactory = ((ConfigurableApplicationContext) mainContext).getBeanFactory();
 
-        String thisProjectProxiesQualifier = dynamicProject.getName();
+        String thisProjectName = dynamicProject.getName();
 
         @SuppressWarnings("rawtypes")
-        Map<String, DynamicComponentProxy> proxyBeansMap = BeanFactoryAnnotationUtils.qualifiedBeansOfType(
+        Map<String, DynamicComponentProxy> proxyBeansMap = DjigBeanFactoryAnnotationUtils.qualifiedBeansOfType(
                 beanFactory,
                 DynamicComponentProxy.class,
-                thisProjectProxiesQualifier
+                DynamicProjectQualifier.class,
+                thisProjectName
         );
 
         proxyBeansMap.forEach((proxyBeanName, proxy) -> {
