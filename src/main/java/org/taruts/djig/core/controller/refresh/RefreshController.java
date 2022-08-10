@@ -16,6 +16,7 @@ import org.taruts.djig.core.childContext.DynamicProjectContextManager;
  * The "refresh" means to clone, to build and replace the dynamic components by their newer versions.
  * Such requests are expected to come from a GitLab webhook.
  */
+@RequestMapping("${djig.controller.refresh.path}/{dynamicProjectName}")
 @ResponseBody
 @Slf4j
 public class RefreshController {

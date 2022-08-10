@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.reactive.handler.SimpleUrlHandlerMapping;
 import org.taruts.djig.core.childContext.DynamicProjectContextManager;
 import org.taruts.djig.core.childContext.gradleBuild.DynamicProjectGradleBuildService;
 import org.taruts.djig.core.childContext.remote.CloneRetryTemplate;
@@ -18,8 +17,6 @@ import org.taruts.djig.core.controller.dynamicProject.DynamicProjectController;
 import org.taruts.djig.core.controller.refresh.RefreshController;
 import org.taruts.djig.core.mainContext.proxy.DynamicComponentProxyRegistrar;
 import org.taruts.djig.core.runtime.DynamicImplementationSelector;
-
-import java.util.Map;
 
 @AutoConfiguration
 @AutoConfigureAfter(TaskExecutionAutoConfiguration.class)
@@ -75,17 +72,6 @@ public class DjigAutoConfiguration {
     @Bean
     DynamicImplementationSelector dynamicImplementationSelector() {
         return new DynamicImplementationSelector();
-    }
-
-    @Bean
-    SimpleUrlHandlerMapping djigHandlerMapping(DjigConfigurationProperties djigConfigurationProperties) {
-        DjigConfigurationProperties.Controller controllerProperties = djigConfigurationProperties.getController();
-        return new SimpleUrlHandlerMapping(
-                Map.of(
-                        controllerProperties.getRefresh().getPath(), refreshController(),
-                        controllerProperties.getDynamicProject().getPath(), dynamicProjectController()
-                )
-        );
     }
 
     @Bean

@@ -16,6 +16,7 @@ import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectRepository;
 import org.taruts.djig.core.OurSmartLifecycle;
 import org.taruts.djig.core.configurationProperties.DjigConfigurationProperties;
+import org.taruts.djig.core.utils.DjigStringUtils;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -131,9 +132,7 @@ public class GitlabHookRegistrar extends OurSmartLifecycle implements Ordered {
         int ourServletContainerPort = webServerApplicationContext.getWebServer().getPort();
 
         String refreshPath = djigConfigurationProperties.getController().getRefresh().getPath();
-        if (refreshPath.charAt(refreshPath.length() - 1) != '/') {
-            refreshPath = refreshPath + '/';
-        }
+        refreshPath = DjigStringUtils.ensureEndsWithSlash(refreshPath);
         return UriComponentsBuilder
                 .newInstance()
                 .scheme(protocol)
