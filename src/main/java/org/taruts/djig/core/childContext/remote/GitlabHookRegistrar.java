@@ -130,12 +130,16 @@ public class GitlabHookRegistrar extends OurSmartLifecycle implements Ordered {
 
         int ourServletContainerPort = webServerApplicationContext.getWebServer().getPort();
 
+        String refreshPath = djigConfigurationProperties.getController().getRefresh().getPath();
+        if (refreshPath.charAt(refreshPath.length() - 1) != '/') {
+            refreshPath = refreshPath + '/';
+        }
         return UriComponentsBuilder
                 .newInstance()
                 .scheme(protocol)
                 .host(host)
                 .port(ourServletContainerPort)
-                .replacePath("refresh")
+                .replacePath(refreshPath)
                 .path(dynamicProject.getName())
                 .build()
                 .toUri()
