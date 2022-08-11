@@ -10,6 +10,7 @@ import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.web.reactive.result.method.annotation.RequestMappingHandlerMapping;
 import org.taruts.djig.core.childContext.classLoader.DynamicProjectClassLoader;
 
 import java.io.File;
@@ -31,6 +32,7 @@ public class GradleProjectApplicationContext extends AnnotationConfigApplication
         getBeanFactory().setBeanClassLoader(childClassLoader);
 
         registerBean(DynamicComponentDefinitionPostProcessor.class, childClassLoader);
+        registerBean(RequestMappingHandlerMapping.class);
 
         // Setting the simplest environment, which won't add any PropertySources
         setEnvironment(new AbstractEnvironment() {

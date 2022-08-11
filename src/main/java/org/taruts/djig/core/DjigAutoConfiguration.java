@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
 import org.taruts.djig.core.childContext.DynamicProjectContextManager;
+import org.taruts.djig.core.childContext.context.DjigProxyHandlerMapping;
 import org.taruts.djig.core.childContext.gradleBuild.DynamicProjectGradleBuildService;
 import org.taruts.djig.core.childContext.remote.CloneRetryTemplate;
 import org.taruts.djig.core.childContext.remote.DynamicProjectCloner;
@@ -82,5 +84,10 @@ public class DjigAutoConfiguration {
     @Bean
     DynamicProjectController dynamicProjectController() {
         return new DynamicProjectController();
+    }
+
+    @Bean
+    DjigProxyHandlerMapping djigProxyHandlerMapping() {
+        return new DjigProxyHandlerMapping(Ordered.HIGHEST_PRECEDENCE);
     }
 }
