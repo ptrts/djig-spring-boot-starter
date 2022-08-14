@@ -12,10 +12,10 @@ import org.springframework.context.event.EventListener;
 import org.taruts.djig.core.DynamicProject;
 import org.taruts.djig.core.DynamicProjectQualifier;
 import org.taruts.djig.core.DynamicProjectRepository;
+import org.taruts.djig.core.childContext.builds.BuildService;
+import org.taruts.djig.core.childContext.builds.DynamicProjectBuild;
 import org.taruts.djig.core.childContext.classLoader.DynamicProjectClassLoader;
 import org.taruts.djig.core.childContext.context.GradleProjectApplicationContext;
-import org.taruts.djig.core.childContext.gradleBuild.DynamicProjectGradleBuild;
-import org.taruts.djig.core.childContext.gradleBuild.DynamicProjectGradleBuildService;
 import org.taruts.djig.core.childContext.remote.DynamicProjectCloner;
 import org.taruts.djig.core.mainContext.proxy.DynamicComponentProxy;
 import org.taruts.djig.dynamicApi.DynamicComponent;
@@ -35,7 +35,7 @@ public class DynamicProjectContextManager {
     private DynamicProjectCloner dynamicProjectCloner;
 
     @Autowired
-    private DynamicProjectGradleBuildService dynamicProjectGradleBuildService;
+    private BuildService buildService;
 
     @Autowired
     private DynamicProjectRepository dynamicProjectRepository;
@@ -67,7 +67,7 @@ public class DynamicProjectContextManager {
         );
 
         // Build
-        DynamicProjectGradleBuild build = dynamicProjectGradleBuildService.build(dynamicProject.getSourceDirectory());
+        DynamicProjectBuild build = buildService.build(dynamicProject);
 
         DynamicProjectClassLoader childClassLoader = new DynamicProjectClassLoader(
                 dynamicProject.getSourceDirectory(),

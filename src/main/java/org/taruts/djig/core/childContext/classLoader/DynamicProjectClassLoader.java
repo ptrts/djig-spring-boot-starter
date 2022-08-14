@@ -15,9 +15,6 @@ public class DynamicProjectClassLoader extends URLClassLoader {
     @Getter
     final File classesDirectory;
 
-    @Getter
-    final File resourcesDirectory;
-
     public DynamicProjectClassLoader(File sourceDirectory, File classesDirectory, File resourcesDirectory) {
         super(
                 sourceDirectory.getName(),
@@ -25,12 +22,12 @@ public class DynamicProjectClassLoader extends URLClassLoader {
                 DynamicProjectClassLoader.class.getClassLoader()
         );
         this.classesDirectory = classesDirectory;
-        this.resourcesDirectory = resourcesDirectory;
     }
 
     private static URL[] filesToUrls(File... directories) {
         return Arrays
                 .stream(directories)
+                .filter(Objects::nonNull)
                 .map(DynamicProjectClassLoader::fileToUrl)
                 .toArray(URL[]::new);
     }

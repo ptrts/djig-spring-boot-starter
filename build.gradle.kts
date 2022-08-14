@@ -16,6 +16,7 @@ configurations {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         name = "s3MavenRepo"
@@ -48,7 +49,7 @@ dependencies {
 
     // Our util libraries
     implementation("org.taruts:taruts-git-utils:1.0.0")
-    implementation("org.taruts:taruts-gradle-utils:1.0.0")
+    implementation("org.taruts:taruts-process-utils:1.0.2")
 
     // Utils
     implementation("org.apache.commons:commons-lang3")
@@ -77,7 +78,7 @@ configure<JavaPluginExtension> {
 
 publishing {
     publications {
-        create<MavenPublication>("jar") {
+        create<MavenPublication>("java") {
             // We use the java-library plugin in this project. The java-library is based upon the java plugin.
             // During the build process, the java plugin creates a so-called component which is a collection of things to publish.
             // The maven-publish plugin can create publications from components.

@@ -3,6 +3,7 @@ package org.taruts.djig.core.configurationProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.taruts.djig.core.childContext.builds.BuildType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class DjigConfigurationProperties {
         String username;
         String password;
         String dynamicInterfacePackage;
+        BuildType buildType;
     }
 
     @Getter

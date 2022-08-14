@@ -8,8 +8,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.taruts.djig.core.childContext.DynamicProjectContextManager;
+import org.taruts.djig.core.childContext.builds.BuildService;
+import org.taruts.djig.core.childContext.builds.types.GradleWrapperBuilder;
+import org.taruts.djig.core.childContext.builds.types.MavenWrapperBuilder;
 import org.taruts.djig.core.childContext.context.DjigProxyHandlerMapping;
-import org.taruts.djig.core.childContext.gradleBuild.DynamicProjectGradleBuildService;
 import org.taruts.djig.core.childContext.remote.CloneRetryTemplate;
 import org.taruts.djig.core.childContext.remote.DynamicProjectCloner;
 import org.taruts.djig.core.childContext.remote.GitlabHookRegistrar;
@@ -41,8 +43,18 @@ public class DjigAutoConfiguration {
     }
 
     @Bean
-    DynamicProjectGradleBuildService dynamicProjectGradleBuildService() {
-        return new DynamicProjectGradleBuildService();
+    GradleWrapperBuilder gradleWrapperBuilder() {
+        return new GradleWrapperBuilder();
+    }
+
+    @Bean
+    MavenWrapperBuilder mavenWrapperBuilder() {
+        return new MavenWrapperBuilder();
+    }
+
+    @Bean
+    BuildService buildService() {
+        return new BuildService();
     }
 
     @Bean

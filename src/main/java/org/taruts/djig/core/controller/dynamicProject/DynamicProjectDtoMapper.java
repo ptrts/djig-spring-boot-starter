@@ -20,7 +20,8 @@ public class DynamicProjectDtoMapper {
                 projectName,
                 remote,
                 sourceDirectory,
-                dto.dynamicInterfacePackage()
+                dto.dynamicInterfacePackage(),
+                dto.buildType()
         );
     }
 }

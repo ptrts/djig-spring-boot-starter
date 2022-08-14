@@ -34,7 +34,8 @@ public class DynamicProjectConfigurationPropertiesMapper {
                 dynamicProjectName,
                 remote,
                 sourceDirectory,
-                dynamicProjectConfigurationProperties.getDynamicInterfacePackage()
+                dynamicProjectConfigurationProperties.getDynamicInterfacePackage(),
+                dynamicProjectConfigurationProperties.getBuildType()
         );
     }
 }
