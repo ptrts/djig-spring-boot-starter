@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.taruts.djig.core.childContext.DynamicProjectContextManager;
 import org.taruts.djig.core.childContext.builds.BuildService;
-import org.taruts.djig.core.childContext.builds.types.GradleWrapperBuilder;
-import org.taruts.djig.core.childContext.builds.types.MavenWrapperBuilder;
+import org.taruts.djig.core.childContext.builds.detect.BuildTypeDetector;
 import org.taruts.djig.core.childContext.context.DjigProxyHandlerMapping;
 import org.taruts.djig.core.childContext.remote.CloneRetryTemplate;
 import org.taruts.djig.core.childContext.remote.DynamicProjectCloner;
@@ -43,13 +42,8 @@ public class DjigAutoConfiguration {
     }
 
     @Bean
-    GradleWrapperBuilder gradleWrapperBuilder() {
-        return new GradleWrapperBuilder();
-    }
-
-    @Bean
-    MavenWrapperBuilder mavenWrapperBuilder() {
-        return new MavenWrapperBuilder();
+    BuildTypeDetector buildTypeDetector() {
+        return new BuildTypeDetector();
     }
 
     @Bean
