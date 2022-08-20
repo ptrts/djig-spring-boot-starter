@@ -29,6 +29,7 @@ public class DjigConfigurationProperties {
         String password;
         String dynamicInterfacePackage;
         BuildType buildType;
+        HostingType hostingType;
     }
 
     @Getter
